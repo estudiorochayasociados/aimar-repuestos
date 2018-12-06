@@ -1,8 +1,5 @@
 Options +FollowSymLinks
-RewriteEngine on
-
-#RewriteCond %{HTTPS} off
-#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteEngine on 
 
 #RewriteBase /
 RewriteCond %{SCRIPT_FILENAME} !-d

@@ -1,7 +1,7 @@
 <?php
 define("TITULO","AIMAR REPUESTOS");
 define("BASE_URL_ANTERIOR","http://192.168.0.14:8888//aimar/repuestos");
-define("BASE_URL","http://".$_SERVER['HTTP_HOST']."");
+define("BASE_URL","http://".$_SERVER['HTTP_HOST']."/aimar/repuestos");
 define("TELEFONOS","+54-3564-423407");
 define("WHATSAPP","0");/**/
 define("EMAIL","info@aimarrepuestos.com.ar");
@@ -16,9 +16,9 @@ define("META_COPY","2018");
 define("META_PLACE","");
 define("META_PAIS","ARGENTINA");
 define("CANONICAL",$_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"]);
-define("USUARIO_DB","c1390794_sitio");
-define("PASS_DB","faAr2010");
-define("BASE_DB","c1390794_sitio");
+define("USUARIO_DB","root");
+define("PASS_DB","");
+define("BASE_DB","aimar_repuestos");
 function Conectarse()
 {
     $connId = mysqli_connect("localhost",USUARIO_DB,PASS_DB,BASE_DB) or die("Error en el server".mysqli_error($con));

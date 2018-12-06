@@ -9,7 +9,7 @@ RewriteRule ^(.*)$ $1.php
 RewriteRule ^productos/(.*)$ ./productos.php?categoria=$1
 RewriteRule ^producto/(.*)$ ./producto.php?id=$1
 RewriteRule ^servicio/(.*)$ ./servicio.php?id=$1
-RewriteRule ^blog/(.*)$ ./nota.php?id=$1
+RewriteRule ^blog/(.*)/(.*)$ ./nota.php?id=$2
 RewriteRule ^checkout/(.*)$ ./checkout.php?paso=$1
 RewriteRule ^c/(.*)$ ./contenido.php?id=$1
 	

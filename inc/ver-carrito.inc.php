@@ -20,8 +20,7 @@ $pago = isset($_GET["pago"]) ? $_GET["pago"] : '';
 $_SESSION["codcompra"] = rand(1,999999999);
 
 $asunto = "Nueva compra de productos desde la web";
-$receptor = EMAIL;
-//$emailUsuario = $_SESSION["user"]["email"];
+$receptor = EMAIL; 
 $asuntoUsuario = "¡Gracias por tu compra!";
 $bancos = Contenido_TraerPorId("bancos");
 $datosBancarios = $bancos[1];
@@ -49,7 +48,6 @@ $error = 0;
       unset($_SESSION["envioDomSuc"]);
     }
     unset($_SESSION["carrito"][$eliminar]);
-    
     headerMove(BASE_URL."/carrito");
   }
 
@@ -59,12 +57,11 @@ $error = 0;
   $precioFinal = 0;
   $carroFinal = '';
   $codigoDescuento = isset($_SESSION["codigoDescuento"]) ? $_SESSION["codigoDescuento"] : '';
-
-  for ($i = 0; $i<= $contaCarrito; $i++) {
+   for ($i = 0; $i<= $contaCarrito; $i++) {
     if (isset($_SESSION["carrito"][$i])) {
       @$carrito = explode("|", $_SESSION["carrito"][$i]);
-      $dataProducto = Portfolio_TraerPorCod($carrito[0]);
-            //var_dump($dataProducto);
+      $dataProducto = Productos_TraerXId($carrito[0]);
+
       $pesoProducto = Rubro_TraerPorCod($dataProducto["rubro"]);
       @$peso += $pesoProducto["peso_rubros"] *$carrito[1];
       $moneda = "ARS";
@@ -90,7 +87,7 @@ $error = 0;
     ?>
 
     <td>
-      <a href="producto.php?id=<?php echo $dataProducto["id_portfolio"] ?>"><b><?php echo $dataProducto["codigo_para_web"] ?></b> | <?php echo $dataProducto["descripcion"] ?></a>
+      <b><?php echo $dataProducto["codigo_para_web"] ?></b> | <?php echo $dataProducto["descripcion"] ?>
     </td>
     <td>
       <?php echo $carrito[1] ?>

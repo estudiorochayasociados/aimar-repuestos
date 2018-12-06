@@ -8,7 +8,7 @@ if($op == 1) {
 	$id = isset($_POST["id"]) ? $_POST["id"] : '';
 	$data = Productos_TraerXId($id);  
 		
-	$codigo_para_web = isset($data["codigo_para_web"]) ? $data["codigo_para_web"] : '1';
+	$codigo_para_web = isset($data["id"]) ? $data["id"] : '1';
 	$cantidad = isset($_POST["cantidad"]) ? $_POST["cantidad"] : '1';
 	$var = $codigo_para_web."|".$cantidad;
 	

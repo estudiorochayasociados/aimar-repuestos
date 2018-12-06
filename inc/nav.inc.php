@@ -116,6 +116,9 @@
                 </li>                
                 <li>
                   <a class="<?php if(strpos(CANONICAL,"redes")) { echo "actived"; } ?>" href="<?php echo BASE_URL ?>/redes">comunidad</a>
+                </li>
+                <li>
+                  <a class="<?php if(strpos(CANONICAL,"blog")) { echo "actived"; } ?>" href="<?php echo BASE_URL ?>/blog">Novedades</a>
                 </li>                
                 <li>
                   <a class="<?php if(strpos(CANONICAL,"contacto")) { echo "actived"; } ?>" href="<?php echo BASE_URL ?>/contacto">contacto</a>

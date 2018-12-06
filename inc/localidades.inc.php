@@ -1,5 +1,6 @@
 <?php  
-$connId = mysqli_connect("localhost", "c1390794_sitio", "faAr2010", "c1390794_sitio") or die("Error en el server" . mysqli_error($connId));
+include("../admin/dal/data.php");
+$connId = Conectarse();
 $palabra = ($_GET["elegido"]);
 $sql = "
 SELECT  `_provincias`.`nombre`,`_localidades`.`nombre`

@@ -3586,7 +3586,7 @@ function Ver_Orden($estado)
                 $result = $con->query($consulta);
                 while ($row = mysqli_fetch_array($result)) {
                     $titulo = $row["TituloNotas"];
-                    $urlLink = mb_strtolower(normaliza_acentos($titulo));
+                    $urlLink = normaliza_acentos($titulo)."/".$row["IdNotas"];
 
                     $fecha = explode("-", $row["FechaNotas"]);
                     $cod = $row["CodNotas"];
@@ -3608,7 +3608,7 @@ function Ver_Orden($estado)
                                 <br>
                             </div>
                             <h1>
-                                <?php echo utf8_encode($row['TituloNotas']); ?>
+                                <?php echo ($row['TituloNotas']); ?>
                             </h1>
                             <div class="blog-content">
                                 <p>
@@ -8220,26 +8220,38 @@ function Publicidad_Read_Admin($estado)
     }
 
 
-    function normaliza_acentos($s)
-    {
-        $s = str_replace("á", "a", $s);
-        $s = str_replace("Á", "A", $s);
-        $s = str_replace("é", "e", $s);
-        $s = str_replace("É", "E", $s);
-        $s = str_replace("í", "i", $s);
-        $s = str_replace("Í", "I", $s);
-        $s = str_replace("ó", "o", $s);
-        $s = str_replace("Ó", "O", $s);
-        $s = str_replace("ú", "u", $s);
-        $s = str_replace("Ú", "U", $s);
-        $s = str_replace(" ", "-", $s);
-        $s = str_replace("ñ", "n", $s);
-        $s = str_replace("Ñ", "N", $s);
-    //para ampliar los caracteres a reemplazar agregar lineas de este tipo:
-    //$s = str_replace("caracter - que - queremos - cambiar","caracter - por - el - cual - lo - vamos - a - cambiar",$s);
-        return $s;
-    }
 
+function normaliza_acentos($s) {
+  $s = trim($s);
+  $s = str_replace("á","a",$s);
+  $s = str_replace("Á","A",$s);
+  $s = str_replace("é","e",$s);
+  $s = str_replace("É","E",$s);
+  $s = str_replace("í","i",$s);
+  $s = str_replace("Í","I",$s);
+  $s = str_replace("ó","o",$s);
+  $s = str_replace("Ó","O",$s);
+  $s = str_replace("ú","u",$s);
+  $s = str_replace("Ú","U",$s);
+  $s = str_replace(" ","-",$s);
+  $s = str_replace("ñ","n",$s);
+  $s = str_replace("Ñ","N",$s);
+  $s = str_replace("?","",$s);
+  $s = str_replace("¿","",$s);
+  $s = str_replace("¡","",$s);
+  $s = str_replace("!","",$s);
+  $s = str_replace(",","",$s);
+  $s = str_replace(";","",$s);
+  $s = str_replace(":","",$s);
+  $s = str_replace("%","",$s);
+  $s = str_replace("/","",$s);
+  $s = str_replace("(","",$s);
+  $s = str_replace(")","",$s);
+  $s = str_replace("\"","",$s);
+  $s = str_replace("\"","",$s);
+  $s = mb_strtolower($s);
+  return $s;
+}
     function antihack_mysqli($var)
     {
         $cnx = Conectarse();
